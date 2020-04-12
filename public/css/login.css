@@ -1,0 +1,17 @@
+
+/* Specific to Login Page */
+#login-Page-101{justify-content: center; align-items: center; height:100%; width: 100%; flex: 1; display: flex; background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%); }
+h3{padding-bottom: 0.5em;border-bottom: solid 1px #d1d1d1;}
+.form101-line{ display: flex;}
+img{ margin: 0 1em;}
+#centered-bloc{
+	padding: 1em;
+	vertical-align: middle;
+	margin-top: -1em;
+	background-clip: padding-box;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 1.1rem;
+	outline: 0;
+	max-width: 450px;
+}

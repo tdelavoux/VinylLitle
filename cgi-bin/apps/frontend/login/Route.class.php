@@ -10,7 +10,7 @@
                         'controller' => 'MainAction::execute'
                 ),
                 'login' => array(
-                        'pattern' => '',
+                        'pattern' => 'login',
                         'controller' => 'MainAction::login'
                 )
             );

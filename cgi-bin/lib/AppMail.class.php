@@ -1,12 +1,6 @@
 <?php
 
-	//require __DIR__ . '/PHPMailer/class.phpmailer.php';
 	require_once('EXT/phpmailer521/class.phpmailer.php');
-	/**
-	 * Envoi de mail standard pour l'application courante (multipart)
-	 * @author nbland
-	 */
-
 	class AppMail
 	{
 		const WRAP_LEN = 400;

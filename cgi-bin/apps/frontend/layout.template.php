@@ -10,6 +10,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>bootstrap-4.4.1/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>css/datatables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dir']; ?>css/main.css">
+                <?php if(LOGIN_INTERFACE) : ?>
+                    <link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dir']; ?>css/login.css">
+                <?php endif; ?>
 		<?php
 			if (\Page::get('style')):
 		?>
@@ -22,7 +25,7 @@
 		
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="<?php \Application::getRoute('index', 'index'); ?>"><?php echo \config\Configuration::$vars['application']['name'] ?></a>
+			<a class="navbar-brand" href="<?php echo \Application::getRoute('index', 'index'); ?>"><?php echo \config\Configuration::$vars['application']['name'] ?></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
 			</button>
@@ -51,9 +54,11 @@
 			      	</li>
 			    </ul>
 			    
- 			    <div class="form-inline my-2 my-lg-0">
-                               
-			    </div> 
+                            <?php if(LOGIN_INTERFACE) : ?>
+                                <div class="form-inline my-2 my-lg-0">
+                                     <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href="<?php echo \Application::getRoute('login', 'delog'); ?>"><?php echo \User::getLogin() ? \User::getLogin() : 'Login'; ?> </a>
+                                </div> 
+                            <?php endif; ?>
 			</div>
 		</nav>
 
@@ -61,7 +66,7 @@
 		<script src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>js/jquery-3.5.0.min.js"></script>
 		<script src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>bootstrap-4.4.1/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>js/datatables.min.js"></script>
-		<div class="container-fluid">
+		<div id="contentPage">
 			<?php require $template; ?>
 		</div>
 		<script>
