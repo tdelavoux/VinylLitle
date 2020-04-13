@@ -1,6 +1,6 @@
 <?php
 
-	require_once('EXT/phpmailer521/class.phpmailer.php');
+	require_once('./ressource/PHPMailer-5.2.1/class.phpmailer.php');
 	class AppMail
 	{
 		const WRAP_LEN = 400;
@@ -12,12 +12,20 @@
 
 		public function __construct()
 		{
-			$serveurName = \config\Configuration::$vars['server']['domain'];
-			$paramsCR = simplexml_load_file('http://'.$serveurName.'/CR/paramsCR.xml');
 			$this->phpMailer = new PHPMailer(true);
 			$this->phpMailer->CharSet = 'utf-8';
-			$this->phpMailer->Host = $paramsCR->SERVEURS->SMTP . ':' . $paramsCR->SERVEURS->SMTP['port'];
 			$this->phpMailer->citation = null;
+                        
+                        // TODO Configure with SMTP Datas, else, catched by mailtrap
+                        $this->phpMailer->Host = "smtp.mailtrap.io";
+                        $this->phpMailer->SMTPAuth = true;
+                        $this->phpMailer->Username = "84f688e5292056";
+                        $this->phpMailer->Password = "6a24a6d189c503";
+                        $this->phpMailer->SMTPSecure = 'tls';
+                        $this->phpMailer->Port  = 2525;
+                        $this->phpMailer->setFrom('info@mailtrap.io', 'Mailtrap');
+                            
+                            
 			$this->phpMailer->citationAuthor = null;
 			$this->phpMailer->citationDate = null;
 			$this->phpMailer->IsSmtp();
