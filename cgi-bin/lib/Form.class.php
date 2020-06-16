@@ -20,6 +20,7 @@
 		const VALUE_OUT_OF_RANGE = 'Valeur trop grande ou trop petite !';
 		const CHARS_MIN = 'caractères minimum pour ce champ !';
 		const CHARS_MAX = 'caractères maximum pour ce champ !';
+                const EMPTY_STRING = '';
 
 		/**
 		 * Type boolean. The value can be a PHP native boolean (true, false), an integer (0, 1) or a string

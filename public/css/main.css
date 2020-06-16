@@ -7,18 +7,3 @@ body{display:flex; flex-direction: column;}
 .text-center{text-align: center;}
 
 #contentPage{ flex: 1; display: flex;}
-
-/* Specific to Login Page */
-#login-Page-101{ justify-content: center; align-items: center; height:100%; width: 100%; flex: 1; display: flex; }
-
-#centered-bloc{
-	padding: 1em;
-	vertical-align: middle;
-	margin-top: -1em;
-	background-clip: padding-box;
-	background-color: #fff;
-	border: 1px solid rgba(0,0,0,.2);
-	border-radius: 1.1rem;
-	outline: 0;
-	max-width: 450px;
-}

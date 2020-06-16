@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title><?php echo \config\Configuration::$vars['application']['name']; if (\Page::get('title')): ?> - <?php echo strip_tags(\Page::get('title')); endif ?></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Place favicon.ico in the root directory -->
+		<meta name="viewport"  content="width=device-width, initial-scale=1">
+                <link rel="icon" type="image/png" href="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>/favicon.png">
 		<link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>fontawesome-5.13.0/css/all.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>bootstrap-4.4.1/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>css/datatables.min.css">
@@ -63,7 +63,7 @@
 		</nav>
 
 
-		<script src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>js/jquery-3.5.0.min.js"></script>
+		<script src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>jquery/jquery-3.5.0.min.js"></script>
 		<script src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>bootstrap-4.4.1/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo \config\Configuration::$vars['application']['dirLib']; ?>js/datatables.min.js"></script>
 		<div id="contentPage">

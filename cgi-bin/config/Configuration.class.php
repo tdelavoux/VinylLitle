@@ -22,6 +22,7 @@
 				'accueil' => 'index',
 				'' => 'index',
 				'error' => 'error',
+				'maintenance_site' => 'maintenance_site',
 				'assistance' => 'assistance',
 				'login' => 'login'
 			)

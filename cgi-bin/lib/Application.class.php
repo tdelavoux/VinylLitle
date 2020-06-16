@@ -75,26 +75,31 @@
 		 */
 		public static function load()
 		{
-			$namespace = '\\' . \config\Configuration::APP_PATH . '\\'
-				. self::$app
-				. '\\'
-				. self::$module
-				. '\\';
+                    $namespace = '\\' . \config\Configuration::APP_PATH . '\\'
+                            . self::$app
+                            . '\\'
+                            . self::$module
+                            . '\\';
+                    
+                    //Si le site est en maintenance, on affiche la page associée
+                    if(MAINTENANCE && !\in_array(self::$module, array('maintenance_site'))){
+                        header('Location:'. \Application::getRoute('maintenance_site', 'maintenance'));
+                    }      
 
-			if (\file_exists(__DIR__ . '/..' . str_replace('\\', '/', $namespace) . 'Route.class.php'))
-			{
-				$action = $namespace . 'Route';
-				$action::follow($namespace);
-			}
-			else
-			{
-				if(!\in_array(self::$module, array('login','error'))&&!PHP_CLI_CGI)
-				{
-					\User::verifSession(\config\Security::getRequiredPrivileges(self::$module, self::$route));
-				}
-				$action = $namespace . 'MainAction';
-				$action::execute();
-			}
+                    if (\file_exists(__DIR__ . '/..' . str_replace('\\', '/', $namespace) . 'Route.class.php'))
+                    {
+                            $action = $namespace . 'Route';
+                            $action::follow($namespace);
+                    }
+                    else
+                    {             
+                        if(!\in_array(self::$module, array('login','error', 'maintenance_site'))&&!PHP_CLI_CGI)
+                        {
+                            \User::verifSession(\config\Security::getRequiredPrivileges(self::$module, self::$route));
+                        }
+                        $action = $namespace . 'MainAction';
+                        $action::execute();
+                    }
 		}
 
 		/**
