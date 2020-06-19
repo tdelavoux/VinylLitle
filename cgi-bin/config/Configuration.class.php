@@ -77,12 +77,6 @@
 				self::$absUrl = 'https://' . ((isset($_SERVER['HTTP_HOST']) && PRODUCTION) ? $_SERVER['HTTP_HOST'] : self::$vars['server']['domain'])
 					. self::$vars['application']['dir'];
 
-				//liste les fichers dans le répertoire public\documentation
-				if (!PHP_CLI_CGI)
-				{
-					self::$documentations = \array_values(array_diff(\scandir($_SERVER['CONTEXT_DOCUMENT_ROOT'].self::$vars['application']['dir'].'documentation/'), array('..', '.')));
-				}
-
 				self::$init = true;
 
 				date_default_timezone_set(self::$vars['locale']['default_timezone']);
