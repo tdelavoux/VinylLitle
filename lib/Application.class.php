@@ -23,12 +23,9 @@ class Application
     public static function setArguments($arguments){self::$arguments = $arguments;}
 
     /**
-     * Initialise les données de l'application en provenance des fichiers init
+     * Initialise les données de l'application en provenance du fichier d'environnement
      */
     public static function init(){
-        self::$vars = \array_replace_recursive(self::$vars, \parse_ini_file(__DIR__ . '/../config/default.ini', true));
-        !PRODUCTION && self::$vars = \array_replace_recursive(self::$vars, \parse_ini_file(__DIR__ . '/../config/dev.ini', true));
-
         $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
     }

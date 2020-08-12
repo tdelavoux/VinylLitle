@@ -6,7 +6,7 @@
     {
         public static function execute()
         {
-            die(\Application::getConf('application', 'name'));
+            \Page::display();
         }
     }
 

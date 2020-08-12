@@ -27,6 +27,7 @@ class Router
             }
         }
         try{
+            die('ok');
             // Aucune route n'a été trouvé, on lance une exception pour renvoyer sur la page d'erreur 
             throw new \ExceptionPage('The URL doesn\'t match any pattern!', 404);
         }catch(Exception $e){
