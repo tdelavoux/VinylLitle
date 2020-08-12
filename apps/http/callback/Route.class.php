@@ -1,6 +1,6 @@
 <?php
 
-	namespace apps\controller\callback;
+	namespace apps\http\callback;
 
 	class Route extends \Router
 	{

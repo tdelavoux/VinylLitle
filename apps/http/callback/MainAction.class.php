@@ -1,27 +1,27 @@
 <?php
 
-    namespace apps\controller\callback;
+    namespace apps\http\callback;
 
     class MainAction
     {
         public static function execute()
         {
-            die('callback');
+           \Page::display();
         }
 
         public static function execute2()
         {
-            die('callback2');
+            \Page::display();
         }
 
         public static function execute3($id)
         {
-            die('callback3 ' . $id);
+            \Page::display();
         }
 
         public static function execute4($id, $id2)
         {
-            die('callback3 ' . $id . ' ' . $id2);
+            \Page::display();
         }
     }
 

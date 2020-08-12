@@ -79,7 +79,7 @@
             if (!self::$login)
             {
                 if(LOGIN_INTERFACE){
-                    header('Location:'. \Application::getRoute('login', 'delog'));
+                    //header('Location:'. \Application::getRoute('login', 'delog'));
                 }else{
                     $login = array('user' => 'guest');
                     self::retrieveUser($login['user']);

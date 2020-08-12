@@ -2,10 +2,9 @@
 
 class ExceptionPage extends Exception
 {
-    // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0) {
-        // make sure everything is assigned properly
-        parent::__construct($message, $code);
-        die($this->message);
+        
+        // TODO appeler le contenu de la page d'erreur
+        \call_user_func_array('\\apps\\http\\error\\MainAction::execute', array($code));
     }
 }
