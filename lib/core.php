@@ -7,6 +7,7 @@
      */
     function app_autoload($classname)
     {
+        
         $classname = explode('\\', $classname);
 
         $size = sizeof($classname) - 1;
@@ -15,10 +16,11 @@
 
         for($i = 0; $i < $size; $i++)
         {
-                $path .= strtolower($classname[$i]) . '/';
+                $path .= $classname[$i] . '/';
         }
 
         $path .= $classname[$size] . '.class.php';
+        //echo($path);
 
         return require $path;
     }
@@ -33,26 +35,11 @@
         session_start();
     }
 
-    try
-    {
-        \Application::configure();
-        \Application::load();
-    }
-    catch(\Exception $e)
-    {
-        die(var_dump( $e));
-        if (\in_array($e->getCode(), array(\Error::PAGE_NOT_FOUND, \Error::UNAUTHORIZED)))
-        {
-            \config\Configuration::$vars['error']['observers'] = \Log::STDOUT;
-        }
-
-        \Log::e($e);
-    }
+    \Router::follow($_SERVER['REQUEST_URI']);
 
     if (!PHP_CLI_CGI)
     {
         ob_end_flush();
-        \Application::executeBackendTriggers();
     }
 
 ?>
