@@ -6,7 +6,7 @@
     {
         public static function execute()
         {
-            die('index');
+            die(\Application::getConf('application', 'name'));
         }
     }
 

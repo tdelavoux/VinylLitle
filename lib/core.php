@@ -34,6 +34,8 @@
         session_start();
     }
 
+    \Application::init();
+
     //Découpe le chemin et exrait les arguments fournis
     $path = filter_input(INPUT_SERVER, 'REQUEST_URI');
     $subPath = str_replace('/VinylLitle/' , '', $path);
