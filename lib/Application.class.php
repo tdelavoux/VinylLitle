@@ -12,11 +12,6 @@ class Application
      */
     private static $arguments;
 
-    /**
-     * Tableau des variables de l'application
-     */
-    private static $vars = array();
-
 
     /* #########################################################################
                             GETTERS AND SETTERS
@@ -32,18 +27,17 @@ class Application
      */
     public static function init(){
         self::$vars = \array_replace_recursive(self::$vars, \parse_ini_file(__DIR__ . '/../config/default.ini', true));
+        !PRODUCTION && self::$vars = \array_replace_recursive(self::$vars, \parse_ini_file(__DIR__ . '/../config/dev.ini', true));
 
-        if (!PRODUCTION)
-        {
-            self::$vars = \array_replace_recursive(self::$vars, \parse_ini_file(__DIR__ . '/../config/dev.ini', true));
-        }
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
     }
 
     /**
-     * Retourne la valeur d'une variable de configuration 
+     * Retourne la valeur d'une donnée d'env
      */
-    public static function getConf($index, $name){
-        return isset(self::$vars[$index][$name]) ? self::$vars[$index][$name] : null;
+    public static function getEnv($index){
+        return isset($_ENV[$index]) ?  $_ENV[$index] : null;
     }
 
 

@@ -28,6 +28,8 @@
 
     spl_autoload_register('app_autoload');
 
+    include 'vendor/autoload.php';
+
     if (!PHP_CLI_CGI)
     {
         ob_start();
