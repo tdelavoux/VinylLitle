@@ -10,10 +10,10 @@ class Router
         // Pour chaque pattern de route défini dans le dossier visé, 
         $routeClass = self::LOCATE . \Application::getModule() . '\\Route';
         if(self::routeExist($routeClass)){
-            foreach($routeClass::$routes as $routePattern => $controler){
+            foreach($routeClass::$routes as $route){
 
                 $values = array();
-                $patternControl = explode('/', $routePattern); 
+                $patternControl = explode('/', $route['pattern']); 
                 end($args) === '' && count($args) > 1 && array_pop($args);
                 if(count($patternControl) !== count($args)){continue;}
 
@@ -22,7 +22,10 @@ class Router
                     if(!isset($args[$key]) || (preg_match('/{(.*)}/', $val) === 0 &&  $val !== $args[$key])){ $patternMattching = false;} 
                     preg_match('/{(.*)}/', $val) && $values[] = $args[$key];
                 }
-                $patternMattching && \call_user_func_array( self::LOCATE  . \Application::getModule() . '\\'. $controler, $values);
+                if($patternMattching){
+                    \Application::setCurrentRouteName($route['name']);
+                     \call_user_func_array( self::LOCATE  . \Application::getModule() . '\\'. $route['action'], $values);
+                } 
                 exit();
             }
         }

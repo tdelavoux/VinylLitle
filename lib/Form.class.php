@@ -448,14 +448,14 @@
 
 		public static function addConfirmation($confirmMsg)
 		{
-				self::$confirms[] = $confirmMsg;
-				return true;
+			self::$confirms[] = $confirmMsg;
+			return true;
 		}
 
 		public static function addWarning($warningMsg)
 		{
-				self::$warnings[] = $warningMsg;
-				return true;
+			self::$warnings[] = $warningMsg;
+			return true;
 		}
 
 		/**
@@ -466,11 +466,10 @@
 		{
 			if (!empty($_SESSION))
 			{
-				$_SESSION['form'] = array('confirms' => self::$confirms);
-				header('Location: ' . $page, true, 303);
-				exit();
+				$_SESSION['form'] = array('confirms' => self::$confirms);		
 			}
-
+			header('Location: ' . $page, true, 303);
+			exit();
 		}
 
 		public static function displayWarning($page)
@@ -478,9 +477,9 @@
 			if (!empty($_SESSION))
 			{
 				$_SESSION['form'] = array('warnings' => self::$warnings);
-				header('Location: ' . $page, true, 303);
-				exit();
 			}
+			header('Location: ' . $page, true, 303);
+			exit();
 
 		}
 
@@ -494,9 +493,9 @@
 			if (!empty($_SESSION))
 			{
 				$_SESSION['form'] = array('errors' => self::$errors, 'params' => self::$params);
-				header('Location: ' . $page, true, 303);
-				exit();
 			}
+			header('Location: ' . $page, true, 303);
+			exit();
 		}
 
 		/**

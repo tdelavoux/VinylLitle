@@ -4,11 +4,11 @@
 
 	class Route extends \Router
 	{
-            protected static $routes = array(
-                '' => 'MainAction::execute',
-                'test' => 'MainAction::execute2',
-                'test2/{id}' => 'MainAction::execute3',
-                'test2/{id}/test/{id2}' => 'MainAction::execute4'
+            public static $routes = array(
+                array('name' => '', 'pattern' => '', 'action' => 'MainAction::execute'),
+                array('name' => 'ex2', 'pattern' => 'test', 'action' => 'MainAction::execute2'),
+                array('name' => 'ex3', 'pattern' => 'test2/{id}', 'action' => 'MainAction::execute3'),
+                array('name' => 'ex3', 'pattern' => 'test2/{id}/test/{id2}', 'action' => 'MainAction::execute4')
             );
 	}
 

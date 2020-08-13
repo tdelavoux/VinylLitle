@@ -5,8 +5,9 @@
     class MainAction
     {
         public static function execute()
-        {
-           \Page::display();
+        { 
+          //\Form::displayResult(Application::getRoute('callback', ''));
+          \Form::displayResult(\Application::getRoute('callback', 'ex2'));
         }
 
         public static function execute2()

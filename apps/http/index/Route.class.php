@@ -4,7 +4,9 @@
 
 	class Route extends \Router
 	{
-            protected static $routes = array('' => 'MainAction::execute');
+		public static $routes = array(
+			array('name' => '', 'pattern' => '', 'action' => 'MainAction::execute')
+		);
 	}
 
 ?>

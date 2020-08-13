@@ -41,6 +41,7 @@
     //Découpe le chemin et exrait les arguments fournis
     $path = filter_input(INPUT_SERVER, 'REQUEST_URI');
     $subPath = str_replace('/VinylLitle/' , '', $path);
+    \Application::setCurrentRoute($subPath);
     $args = explode('/', $subPath);
     \Application::setModule($args[0] !== '' ? array_shift($args) : 'index');
     \Application::setArguments($args);

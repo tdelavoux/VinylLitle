@@ -4,11 +4,10 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title> <?php echo strip_tags(\Page::get('title')); ?></title>
-		<link rel="stylesheet" type="text/css" href="<?php echo \Application::getEnv('DIR'); ?>css/main.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo \Application::getEnv('DIR'); ?>public/css/main.css">
 	</head>
 	<body>
 		
-
 			TEST DU BOUZIN
 			
 		<div id="contentPage">
