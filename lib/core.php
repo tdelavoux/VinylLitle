@@ -39,10 +39,13 @@
     \Application::init();
 
     //Découpe le chemin et exrait les arguments fournis
-    $path = filter_input(INPUT_SERVER, 'REQUEST_URI');
-    $subPath = str_replace('/VinylLitle/' , '', $path);
+    $path           = filter_input(INPUT_SERVER, 'REQUEST_URI');
+    $subPath        = str_replace(\Application::getEnv('DIR') , '', $path);
+    $parse          = parse_url($subPath);
+    $parse['path']  = substr( $parse['path'], -1) === '/' ?  $parse['path'] :  $parse['path'] . '/';
+    $args           = explode('/', $parse['path']);
+
     \Application::setCurrentRoute($subPath);
-    $args = explode('/', $subPath);
     \Application::setModule($args[0] !== '' ? array_shift($args) : 'index');
     \Application::setArguments($args);
     \Router::follow($subPath);

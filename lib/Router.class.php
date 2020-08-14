@@ -11,22 +11,25 @@ class Router
         $routeClass = self::LOCATE . \Application::getModule() . '\\Route';
         if(self::routeExist($routeClass)){
             foreach($routeClass::$routes as $route){
-
+               
                 $values = array();
                 $patternControl = explode('/', $route['pattern']); 
                 end($args) === '' && count($args) > 1 && array_pop($args);
-                if(count($patternControl) !== count($args)){continue;}
-
+                if(count($args) !== 0 && count($patternControl) !== count($args)){continue;}
+                
                 $patternMattching = true;
                 foreach($patternControl as $key => $val){ 
+                    
                     if(!isset($args[$key]) || (preg_match('/{(.*)}/', $val) === 0 &&  $val !== $args[$key])){ $patternMattching = false;} 
                     preg_match('/{(.*)}/', $val) && $values[] = $args[$key];
                 }
+                
                 if($patternMattching){
                     \Application::setCurrentRouteName($route['name']);
-                     \call_user_func_array( self::LOCATE  . \Application::getModule() . '\\'. $route['action'], $values);
+                    \call_user_func_array( self::LOCATE  . \Application::getModule() . '\\'. $route['action'], $values);
+                    exit();
                 } 
-                exit();
+                
             }
         }
         try{
